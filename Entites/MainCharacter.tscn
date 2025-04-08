@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://c3m8q60boqasu"]
+[gd_scene load_steps=6 format=3 uid="uid://c3m8q60boqasu"]
 
 [ext_resource type="Texture2D" uid="uid://dva18o602n8qk" path="res://icon.svg" id="1_y5fbm"]
 
@@ -33,6 +33,26 @@ func _physics_process(delta: float) -> void:
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_txws2"]
 
+[sub_resource type="Animation" id="Animation_fue42"]
+resource_name = "Dash"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i8mkm"]
+_data = {
+"Dash": SubResource("Animation_fue42")
+}
+
 [node name="MainCharacter" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
@@ -44,3 +64,15 @@ shape = SubResource("RectangleShape2D_txws2")
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("1_y5fbm")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+offset = Vector2(0, -20)
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
+drag_left_margin = 0.5
+drag_right_margin = 0.5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
+libraries = {
+"": SubResource("AnimationLibrary_i8mkm")
+}
