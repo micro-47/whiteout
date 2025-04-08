@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckffnrkwvg0ys"]
+
+[ext_resource type="PackedScene" uid="uid://487c7l42y7fg" path="res://Entites/Floor.tscn" id="1_i356n"]
+[ext_resource type="PackedScene" uid="uid://c3m8q60boqasu" path="res://Entites/MainCharacter.tscn" id="2_1laaf"]
+[ext_resource type="PackedScene" uid="uid://cuyc804bmprhc" path="res://Entites/minotaur.tscn" id="3_yulwh"]
+
+[node name="AlvinTestScene" type="Node2D"]
+
+[node name="Floor" parent="." instance=ExtResource("1_i356n")]
+position = Vector2(175, 521)
+scale = Vector2(10, 1)
+
+[node name="Floor2" parent="." instance=ExtResource("1_i356n")]
+position = Vector2(372, 521)
+scale = Vector2(10, 1)
+
+[node name="MainCharacter" parent="." instance=ExtResource("2_1laaf")]
+position = Vector2(136, 473)
+
+[node name="Minotaur" parent="." instance=ExtResource("3_yulwh")]
+position = Vector2(403, 446)
