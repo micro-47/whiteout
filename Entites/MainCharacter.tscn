@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3m8q60boqasu"]
+[gd_scene load_steps=9 format=3 uid="uid://c3m8q60boqasu"]
 
 [ext_resource type="Texture2D" uid="uid://dva18o602n8qk" path="res://icon.svg" id="1_y5fbm"]
+[ext_resource type="PackedScene" uid="uid://c0lpmnxcukcgi" path="res://Entites/weapon_reference.tscn" id="2_ubdlf"]
 
 [sub_resource type="GDScript" id="GDScript_1vbca"]
 resource_name = "Basic_Movement"
@@ -53,6 +54,11 @@ _data = {
 "Dash": SubResource("Animation_fue42")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gj2qj"]
+size = Vector2(20, 126.058)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2cx6"]
+
 [node name="MainCharacter" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
@@ -76,3 +82,21 @@ drag_right_margin = 0.5
 libraries = {
 "": SubResource("AnimationLibrary_i8mkm")
 }
+
+[node name="Weapon" parent="CharacterBody2D" instance=ExtResource("2_ubdlf")]
+position = Vector2(10, 0)
+
+[node name="hitbox" type="Area2D" parent="CharacterBody2D"]
+position = Vector2(10, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/hitbox"]
+rotation = 0.359538
+scale = Vector2(0.112, 0.112)
+shape = SubResource("RectangleShape2D_gj2qj")
+
+[node name="hurtbox" type="Area2D" parent="CharacterBody2D"]
+position = Vector2(20, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/hurtbox"]
+position = Vector2(-20, 0)
+shape = SubResource("RectangleShape2D_e2cx6")
