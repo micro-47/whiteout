@@ -6,7 +6,7 @@ const JUMP_VELOCITY = -400.0
 
 
 @onready
-var player = get_node("/root/AlvinTestScene/MainCharacter/CharacterBody2D")
+var player = get_node("/root/TestScene/MainCharacter/CharacterBody2D")
 
 
 func _physics_process(delta: float) -> void:

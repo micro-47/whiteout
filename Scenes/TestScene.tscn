@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=4 uid="uid://bbgvjl1wvi46w"]
+[gd_scene load_steps=6 format=4 uid="uid://bbgvjl1wvi46w"]
 
 [ext_resource type="PackedScene" uid="uid://c3m8q60boqasu" path="res://Entites/MainCharacter.tscn" id="2_0vqy3"]
 [ext_resource type="TileSet" uid="uid://icj0atpgoghy" path="res://Assets/test.tres" id="3_1nt5p"]
 [ext_resource type="Texture2D" uid="uid://dva18o602n8qk" path="res://icon.svg" id="3_qjvet"]
+[ext_resource type="PackedScene" uid="uid://cuyc804bmprhc" path="res://Entites/minotaur.tscn" id="4_cffqs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lqadm"]
 
@@ -24,3 +25,6 @@ shape = SubResource("RectangleShape2D_lqadm")
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
 texture = ExtResource("3_qjvet")
+
+[node name="Minotaur" parent="." instance=ExtResource("4_cffqs")]
+position = Vector2(439, 392)

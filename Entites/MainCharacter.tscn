@@ -21,7 +21,10 @@ var dashing = false
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	# making the hurtbox slightly bigger than collision box is done by this vid as well: https://www.youtube.com/watch?v=u-02qALsDmg
 	print(\"hurtbox entered\")
-	# TODO: use groups to see if they damage player
+	if body.is_in_group(\"enemy\") or body.owner.is_in_group(\"enemy\"):
+		# .owner gets the node of the scene where the part is defined
+		print(\"collided with enemy\")
+		print(\"damaged\")
 
 func dash_ended():
 	dashing = false
