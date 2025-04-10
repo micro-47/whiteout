@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://487c7l42y7fg" path="res://Entites/Floor.tscn" id="1_i356n"]
 [ext_resource type="PackedScene" uid="uid://c3m8q60boqasu" path="res://Entites/MainCharacter.tscn" id="2_1laaf"]
 [ext_resource type="PackedScene" uid="uid://cuyc804bmprhc" path="res://Entites/minotaur.tscn" id="3_yulwh"]
-[ext_resource type="PackedScene" uid="uid://cgjx4ac855jry" path="res://Entites/minotaur_short_attack.tscn" id="4_7s68a"]
+[ext_resource type="PackedScene" uid="uid://4d4fvj0iyxxd" path="res://Entites/minotaur_short_attack.tscn" id="4_7s68a"]
 
 [node name="AlvinTestScene" type="Node2D"]
 

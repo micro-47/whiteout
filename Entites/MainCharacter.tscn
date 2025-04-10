@@ -11,6 +11,25 @@ script/source = "extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
+@export var DASH_DURATION = 1.0
+@export var DASH_COOLDOWN = 2.0
+@export var DASH_MULTIPLIER = 3.0
+
+var dash_available = true
+var dashing = false
+
+func dash_ended():
+	dashing = false
+	# this could also be done inside the initial dasher
+	get_tree().create_timer(DASH_COOLDOWN).timeout.connect(func(): dash_available=true)
+
+func _input(event: InputEvent) -> void:
+	if dash_available and Input.is_key_pressed(KEY_1):
+		# TODO: if not moving, then dash in direction
+		# TODO: change key
+		dashing = true
+		dash_available = false
+		get_tree().create_timer(DASH_DURATION).timeout.connect(dash_ended)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -18,6 +37,7 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
+	# TODO: change key
 	if Input.is_action_just_pressed(\"ui_accept\") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
@@ -25,11 +45,14 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis(\"ui_left\", \"ui_right\")
 	if direction:
-		velocity.x = direction * SPEED
+		velocity.x = direction * get_x_speed()
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, get_x_speed())
 
 	move_and_slide()
+
+func get_x_speed():
+	return SPEED * (DASH_MULTIPLIER if dashing else 1.0)
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_txws2"]
